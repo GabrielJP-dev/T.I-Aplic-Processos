@@ -1,0 +1,44 @@
+#card{
+    box-shadow: 6px 6px 10px;
+}
+
+#mcadas{
+    justify-content: right;
+}
+
+#button{
+    
+        
+        padding: 10px 20px;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+     
+        
+}
+
+#rodape{
+    margin-top: 260px;
+}
+
+/* 
+h3{
+    background-color: #F9E6B3;
+    border: 2px solid black;
+    width: 40px;
+    height: 80px;
+} */
+
+
+
+#altidade {
+        width: 60px;
+}
+
+#idade {
+    width: 60px;
+}
