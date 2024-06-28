@@ -3,11 +3,11 @@ let idPessoa = JSON.parse(localStorage.getItem("usuarioCorrente"));
 // Função para exibir pets
 async function Exibir() {
   try {
-    const response = await fetch('https://sua-api.com/pets', { method: 'GET' });
+    const response = await fetch('http://localhost:3000/pets', { method: 'GET' });
     const bancoPets = await response.json();
     var cards = "";
     var img = "";
-
+    console.log(bancoPets)
     if (bancoPets.length != 0) {
       for (var index = 0; index < bancoPets.length; index++) {
         if (idPessoa == bancoPets[index].pessoa) {
@@ -20,29 +20,13 @@ async function Exibir() {
             <div class="card mt-5 mx-5" id="card" style = "width: 550px;">
               <div class="row justify-content-center">
                 <div class="col-md-6 text-center">
-                  <img src="${img}" alt="" class="pt-4 pb-1" width="100px" id="imgcard">
-                  <!-- Botão de excluir --><br>
-                  <button type="button" class="btn btn-danger mt-4 mb-4" onclick="AlertExcluir(${index})">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"></path>
-                      <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"></path>
-                    </svg>
-                    Excluir
-                  </button>
-                  <!-- Botão de editar -->
-                  <button type="button" class="btn btn-primary mt-4 mb-4" data-bs-toggle="modal" data-bs-target="#edit" data-bs-whatever="${index}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
-                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
-                    </svg>
-                    Editar
-                  </button>
+                  <img src="${img}" alt="" class="pt-4 pb-1" width="100px" id="imgcard">  
                 </div>
                 <div class="col-md-4 text-center">
-                  <p class="pt-4"><b>${bancoPets[index].nome}</b></p>
-                  <p>${bancoPets[index].sexo}</p>
-                  <p>${bancoPets[index].idade} Ano(s)</p>
-                  <p>${bancoPets[index].raca}</p>
+                  <p class="pt-4"><b>${bancoPets[index].Nome}</b></p>
+                  <p>${bancoPets[index].Genero}</p>
+                  <p>${bancoPets[index].Idade} Ano(s)</p>
+                  <p>${bancoPets[index].Raca}</p>
                 </div>
               </div>
             </div>

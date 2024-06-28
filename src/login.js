@@ -11,7 +11,7 @@ function validarCampos(senha, cpf) {
 }
 
 async function GetDados(cpf) {
-    const response = await fetch(`/Users/${cpf}`, {
+    const response = await fetch(`http://localhost:3000/usuarios`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json'
@@ -32,16 +32,13 @@ async function Login(event) {
 
     try {
         const dados = await GetDados(cpf);
-
-        if(dados.cpf === cpf && dados.senha === senha) {
+        console.log(dados)
+    dados.forEach(element => {
+        if(element.Cpf === cpf && element.Senha === senha) {
             window.location.href = 'home.html';
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Erro',
-                text: 'Email ou senha incorretos!'
-            });
         }
+    });
+        
     } catch (error) {
         Swal.fire({
             icon: 'error',
