@@ -68,59 +68,49 @@ checkboxIsento.addEventListener("change", function () {
   }
 });
 
-// Cria um objeto com os dados do formulário
-const PFisica = {
-  nome : nome,
-  email : email,
-  celular : celular,
-  telefone : telefone,
-  genero : genero,
-  nascimento : nascimento,
-  cpf : cpf,
-  senha : senha,
-};
-const PJuridica = {
-  nome : nome,
-  email : email,
-  celular : celular,
-  telefone : telefone,
-  genero : genero,
-  nascimento : data,
-  cpf : cpf,
-  senha : senha,
-  razao: razao,
-  inscricao: inscricao,
-  cnpj:cnpj,
-  estado: estadoIE,
-};
+var nome = document.getElementById('nome')
+var email = document.getElementById('email')
+var celular = document.getElementById('celular')
+var telefone = document.getElementById('telefone')
+var nascimento = document.getElementById('data')
+var cpf = document.getElementById('cpf')
+var senha = document.getElementById('senha')
 
-try {
-  // Envia os dados para o backend
-  const response = await fetch('http://localhost:5256/api/servico', {
+document.getElementById("btnCriarContaFisica").addEventListener("click", async ()=>{
+
+   createUser();
+
+})
+
+async function createUser() {
+// Cria um objeto com os dados do formulário
+  const PFisica = {
+    nome : nome.value,
+    email : email.value,
+    celular : celular.value,
+    telefone : telefone.value,
+    nascimento : nascimento.value,
+    cpf : cpf.value,
+    senha : senha.value,
+  };
+
+  const response = await fetch('http://localhost:3000/usuarios', {
       method: 'POST',
       headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Content-Type': 'application/json'
       },
-      body: JSON.stringify(PFisica),
-      body: JSON.stringify(PJuridica)
+      body: JSON.stringify(PFisica)
+    });
 
-  });
-
-  if (response.ok) {
+    if (response.ok) {
       const result = await response.json();
       alert(result.message);
       document.getElementById('pessoa-fisica').reset();
-      document.getElementById('pessoa-juridica').reset();
       
-       // Limpa o formulário
-  } else {
+    } else {
       const error = await response.json();
       alert(`Erro ao cadastrar serviço: ${error.message}`);
-  }
-} catch (error) {
-  console.error('Erro:', error);
-  alert('Erro ao conectar com o servidor');
+    }
 }
 
 
@@ -340,7 +330,6 @@ function salvaLogin(event) {
   let email = document.querySelector('.email').value;
   let celular = document.querySelector('.celular').value;
   let telefone = document.querySelector('.telefone').value;
-  let genero = document.getElementById('genero').value;
   let nascimento = document.getElementById('data').value;
   let cpf = document.querySelector('.cpf').value;
   let senha = document.querySelector('.senha').value;
@@ -390,15 +379,6 @@ function salvaLogin(event) {
   if(!verificarCheckbox()) {
     alert('Por favor, aceite os termos e condições antes de prosseguir com o cadastro.');
     return
-  }
-
-  // adicionando usuario no banco de dados (função ja existente na parte script.js)
-  if (nome && email && celular && genero && nascimento && cpf && senha) {
-    addUser(nome, email, celular, telefone, genero, nascimento, cpf, senha);
-    alert('Usuário cadastrado com sucesso. Proceda com o login para continuar.');
-    window.location.href = "login.html";
-  } else {
-    alert('Por favor, preencha todos os campos obrigatórios.');
   }
 }
 
@@ -675,11 +655,7 @@ function salvaLoginJuridico(event) {
   }
 
   // adicionando usuario no banco de dados (função ja existente na parte script.js)
-  if (razao && email && celular && cnpj && senha) {
-    addUserJuridico(razao, email, celular, telefone, nome, cnpj, inscricao, estadoIE, senha);
-    alert('Usuário cadastrado com sucesso. Proceda com o login para continuar.');
-    window.location.href = "login.html";
-  } else {
+  if (!(razao && email && celular && cnpj && senha)) {
     alert('Por favor, preencha todos os campos obrigatórios.');
   }
 }

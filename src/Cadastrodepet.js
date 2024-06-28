@@ -150,7 +150,7 @@ async function cadastroPet() {
     };
 
     try {
-      await fetch('https://sua-api.com/pets', {
+      await fetch('http://localhost:3000/pets', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
