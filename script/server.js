@@ -89,19 +89,22 @@ app.get('/usuarios', async (req, res) => {
 });
 
 app.post('/pets', async (req, res) => {
-
-    res.send("ok");
-    return;
-
-    const { nome, preco, descricao } = req.body;
+    console.log(req.body)
+    const { 
+      nome,
+      sexo,
+      idade,
+      raca,
+      especie 
+     } = req.body;
 
     try {
         await db.connect();
 
-        const sql = 'INSERT INTO servicos (nome, preco, descricao) VALUES (?, ?, ?)';
-        const results = await db.query(sql, [nome, preco, descricao]);
+        const sql = 'INSERT INTO pets (Tipo, Nome, Genero, Idade, Raca) VALUES (?, ?, ?, ?, ?)';
+        const results = await db.query(sql, [especie, nome, sexo, idade, raca]);
 
-        res.json({ message: 'Usuário criado com sucesso!', results });
+        res.json({ message: 'Pet criado com sucesso!', results });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
