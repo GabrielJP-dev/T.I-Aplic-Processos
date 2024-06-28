@@ -68,6 +68,61 @@ checkboxIsento.addEventListener("change", function () {
   }
 });
 
+// Cria um objeto com os dados do formulário
+const PFisica = {
+  nome : nome,
+  email : email,
+  celular : celular,
+  telefone : telefone,
+  genero : genero,
+  nascimento : nascimento,
+  cpf : cpf,
+  senha : senha,
+};
+const PJuridica = {
+  nome : nome,
+  email : email,
+  celular : celular,
+  telefone : telefone,
+  genero : genero,
+  nascimento : data,
+  cpf : cpf,
+  senha : senha,
+  razao: razao,
+  inscricao: inscricao,
+  cnpj:cnpj,
+  estado: estadoIE,
+};
+
+try {
+  // Envia os dados para o backend
+  const response = await fetch('http://localhost:5256/api/servico', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+      },
+      body: JSON.stringify(PFisica),
+      body: JSON.stringify(PJuridica)
+
+  });
+
+  if (response.ok) {
+      const result = await response.json();
+      alert(result.message);
+      document.getElementById('pessoa-fisica').reset();
+      document.getElementById('pessoa-juridica').reset();
+      
+       // Limpa o formulário
+  } else {
+      const error = await response.json();
+      alert(`Erro ao cadastrar serviço: ${error.message}`);
+  }
+} catch (error) {
+  console.error('Erro:', error);
+  alert('Erro ao conectar com o servidor');
+}
+
 
 // COMEÇO DO CADASTRO DO USUARIO (PESSOA FISICA) E VALIDAÇÃO DOS INPUTS
 // VALIDANDO INPUT NOME
