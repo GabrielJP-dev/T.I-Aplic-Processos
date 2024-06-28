@@ -240,7 +240,6 @@ function AlertSucesso(opcao){
   )
 }
 
-
 //Função Excluir
 
 function AlertExcluir(id){

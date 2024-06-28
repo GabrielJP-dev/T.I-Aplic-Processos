@@ -19,7 +19,6 @@
 </head>
 
 <body>
-  <script src="sair.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
@@ -71,50 +70,43 @@
 
   <!-- Modal Cadastrar -->
 
-  <div class="modal fade" tabindex="-1" id="Cadastro" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"><b>Agendamento de Serviço</b></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body float-center">
-            <form id="agendamentoForm">
-              
-              <div class="form-group">
-                <label for="nomePet">Nome do Pet:</label>
-               <select id="nomes" name="nomes">
-
-               </select>
-              </div>
-              
-              <div class="form-group">
-                <label for="servico">Serviço:</label>
-                <select id="servico" name="servico">
-                  
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="data">Data:</label>
-                <input type="date" id="data" name="data" required>
-              </div>
-              <div class="form-group" id="horario" style = "visibility: hidden;">
-                <label for="horario">Horário:</label>
-                <select id="option" >
-                </select>
-              </div>
-              <button type="submit" class="submeter">Agendar</button>
-            </form>
-
-          <div class="modal-footer">
-
-          </div>
-
-        </div>
-      </div>
+  <div class="container my-4">
+    <div class="modal-header">
+      <h5 class="modal-title mb-3"><b>Agendamento de Serviço</b></h5>
     </div>
+    <div class="modal-body float-center">
+      <div id="agendamentoForm">
+        
+        <div class="form-group">
+          <label for="nomePet">Nome do Pet:</label>
+          <input type="text" id="nomes" name="nomes">
+
+          </input>
+        </div>
+        
+        <div class="form-group">
+          <label for="servico">Serviço:</label>
+          <select id="sel_servico" name="servico">
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="data">Data:</label>
+          <input type="date" id="data" name="data" required>
+        </div>
+        <div class="form-group" id="horario">
+          <label for="horario">Horário:</label>
+          <select id="option" >
+          </select>
+        </div>
+        <button id="agendar_submit" class="submeter">Agendar</button>
+      </div>
+
+    </div>
+
+  </div>
   </div>
 
+  <!--
   <main>
     <div class="container-fluid">
       <div class="row justify-content-center pt-3">
@@ -127,8 +119,8 @@
 
       </div>
     </div>
-  </main>
-
+  </main> 
+  -->
 
   <!-- Início footer -->
   <div class="container-fluid" style="background-color: #F9E6B3;" id="rodape">
@@ -171,7 +163,6 @@
     </footer>
   </div>
   <!-- Fim footer -->
-
 
   <script src="agendcliente.js"></script>
 </body>

@@ -52,7 +52,7 @@
                 <form action="" name="cadastroFisico" id="formCriarConta">
                     <fieldset id="fieldsetPessoaFis" style="display: flex; justify-content: space-around;">
                         <div
-                            style="display: flex; flex-direction: column; justify-content: start; align-items: center; gap: 1em; ">
+                            style="display: flex; flex-direction: column; justify-content: start; align-items: center; gap: 1em; visibility: hidden;">
                             <div class="tipo-cadastro">
                                 <input type="radio" name="pessoa-fisica" id="pessoa-fisica" value="fisica" checked>
                                 <label for="pessoa-fisica">Física</label>
@@ -94,15 +94,6 @@
                                     <br>
                                     <input type="tel" name="telefone" class="telefone" id="telefone" oninput="validarTelefone(cadastroFisico.telefone)" placeholder="Telefone">
                                     <p class="mensagemErro" id="erro-telefone"></p> 
-                                </label>
-                                <label for="genero">
-                                    Gênero:
-                                    <br>
-                                    <select name="genero" id="genero">
-                                        <option value="masculino">Masculino</option>
-                                        <option value="feminino">Feminino</option>
-                                        <option value="naoinformar">Não informar</option>
-                                    </select>
                                 </label>
                             </div>
                             <div class="containerInputs">
